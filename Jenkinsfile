@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'fedora:41'
+      args '--privileged --user 0'
     }
 
   }

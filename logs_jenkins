@@ -1,0 +1,524 @@
+Started by user admin
+
+14:57:08 Connecting to https://api.github.com with no credentials, anonymous access
+14:57:09 Jenkins-Imposed API Limiter: Current quota for Github API usage has 36 remaining (1 over budget). Next quota of 60 in 34 min. Sleeping for 4 min 31 sec.
+14:57:09 Jenkins is attempting to evenly distribute GitHub API requests. To configure a different rate limiting strategy, such as having Jenkins restrict GitHub API requests only when near or above the GitHub rate limit, go to "GitHub API usage" under "Configure System" in the Jenkins settings.
+15:00:10 Jenkins-Imposed API Limiter: Still sleeping, now only 1 min 29 sec remaining.
+15:01:42 Jenkins-Imposed API Limiter: Current quota for Github API usage has 33 remaining (1 over budget). Next quota of 60 in 29 min. Sleeping for 4 min 35 sec.
+15:01:42 Jenkins is attempting to evenly distribute GitHub API requests. To configure a different rate limiting strategy, such as having Jenkins restrict GitHub API requests only when near or above the GitHub rate limit, go to "GitHub API usage" under "Configure System" in the Jenkins settings.
+15:04:43 Jenkins-Imposed API Limiter: Still sleeping, now only 1 min 33 sec remaining.
+Obtained Jenkinsfile from 390825cf99ede0537e58e8feddfba38a49460292
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /var/jenkins_home/workspace/Pipeline_main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+Warning: CredentialId "github" could not be found.
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Pipeline_main/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Oz73/Pipeline.git # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/Oz73/Pipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+ > git fetch --no-tags --force --progress -- https://github.com/Oz73/Pipeline.git +refs/heads/main:refs/remotes/origin/main # timeout=10
+Checking out Revision 390825cf99ede0537e58e8feddfba38a49460292 (main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 390825cf99ede0537e58e8feddfba38a49460292 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 390825cf99ede0537e58e8feddfba38a49460292 # timeout=10
+Commit message: "."
+ > git rev-list --no-walk fc7fb9e591f46e42952850f12692ddaa0bbe317e # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . fedora:41
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 17914a29291f50ae36f826f6229bc3244fe335b0010b03615f076ba3693d3256
+$ docker run -t -d -u 1000:1000 --privileged --user 0 -w /var/jenkins_home/workspace/Pipeline_main --volumes-from 17914a29291f50ae36f826f6229bc3244fe335b0010b03615f076ba3693d3256 -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** fedora:41 cat
+$ docker top 277ee042e791cbfbce92de959f0782baab6e82c05bd882b0795d93945a320656 -eo pid,comm
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (update)
+[Pipeline] sh
++ dnf update -y
+Updating and loading repositories:
+ Fedora 41 openh264 (From Cisco) - x86_ 100% |   3.2 KiB/s |   6.0 KiB |  00m02s
+ Fedora 41 - x86_64                     100% |   1.9 MiB/s |  35.4 MiB |  00m18s
+>>> Curl error (7): Could not connect to server for https://fastmirror.pp.ua/fed
+>>> Curl error (7): Could not connect to server for http://fastmirror.pp.ua/fedo
+>>> Curl error (7): Could not connect to server for https://fastmirror.pp.ua/fed
+>>> Curl error (7): Could not connect to server for https://fastmirror.pp.ua/fed
+>>> Curl error (7): Could not connect to server for http://fastmirror.pp.ua/fedo
+>>> Curl error (7): Could not connect to server for http://fastmirror.pp.ua/fedo
+ Fedora 41 - x86_64 - Updates           100% |   1.4 MiB/s |   5.6 MiB |  00m04s
+Repositories loaded.
+Package                                        Arch   Version                    Repository                            Size
+Upgrading:
+ coreutils                                     x86_64 9.5-11.fc41                updates                            5.7 MiB
+   replacing coreutils                         x86_64 9.5-10.fc41                603630c380664610adf88f7399f88fe7   5.6 MiB
+ coreutils-common                              x86_64 9.5-11.fc41                updates                           11.2 MiB
+   replacing coreutils-common                  x86_64 9.5-10.fc41                603630c380664610adf88f7399f88fe7  11.2 MiB
+ crypto-policies                               noarch 20241029-1.git8baf557.fc41 updates                          136.9 KiB
+   replacing crypto-policies                   noarch 20241010-1.git8baf557.fc41 603630c380664610adf88f7399f88fe7 136.9 KiB
+ dnf5                                          x86_64 5.2.7.0-1.fc41             updates                            2.0 MiB
+   replacing dnf5                              x86_64 5.2.6.2-1.fc41             603630c380664610adf88f7399f88fe7   1.6 MiB
+ dnf5-plugins                                  x86_64 5.2.7.0-1.fc41             updates                            1.1 MiB
+   replacing dnf5-plugins                      x86_64 5.2.6.2-1.fc41             603630c380664610adf88f7399f88fe7   1.0 MiB
+ elfutils-default-yama-scope                   noarch 0.192-6.fc41               updates                            1.8 KiB
+   replacing elfutils-default-yama-scope       noarch 0.192-5.fc41               551623a9fceb4bb4b7bf61f67f15cf34   1.8 KiB
+ elfutils-libelf                               x86_64 0.192-6.fc41               updates                            1.2 MiB
+   replacing elfutils-libelf                   x86_64 0.192-5.fc41               551623a9fceb4bb4b7bf61f67f15cf34   1.2 MiB
+ elfutils-libs                                 x86_64 0.192-6.fc41               updates                          666.3 KiB
+   replacing elfutils-libs                     x86_64 0.192-5.fc41               551623a9fceb4bb4b7bf61f67f15cf34 666.3 KiB
+ fedora-release-common                         noarch 41-28                      updates                           19.7 KiB
+   replacing fedora-release-common             noarch 41-25                      603630c380664610adf88f7399f88fe7  19.5 KiB
+ fedora-release-container                      noarch 41-28                      updates                            0.0   B
+   replacing fedora-release-container          noarch 41-25                      603630c380664610adf88f7399f88fe7   0.0   B
+ fedora-release-identity-container             noarch 41-28                      updates                            1.5 KiB
+   replacing fedora-release-identity-container noarch 41-25                      603630c380664610adf88f7399f88fe7   1.5 KiB
+ glibc                                         x86_64 2.40-12.fc41               updates                            6.7 MiB
+   replacing glibc                             x86_64 2.40-3.fc41                603630c380664610adf88f7399f88fe7   6.7 MiB
+ glibc-common                                  x86_64 2.40-12.fc41               updates                            1.0 MiB
+   replacing glibc-common                      x86_64 2.40-3.fc41                603630c380664610adf88f7399f88fe7   1.0 MiB
+ glibc-minimal-langpack                        x86_64 2.40-12.fc41               updates                            0.0   B
+   replacing glibc-minimal-langpack            x86_64 2.40-3.fc41                603630c380664610adf88f7399f88fe7   0.0   B
+ krb5-libs                                     x86_64 1.21.3-3.fc41              updates                            2.3 MiB
+   replacing krb5-libs                         x86_64 1.21.3-2.fc41              603630c380664610adf88f7399f88fe7   2.3 MiB
+ libdnf5                                       x86_64 5.2.7.0-1.fc41             updates                            3.5 MiB
+   replacing libdnf5                           x86_64 5.2.6.2-1.fc41             603630c380664610adf88f7399f88fe7   3.2 MiB
+ libdnf5-cli                                   x86_64 5.2.7.0-1.fc41             updates                          853.1 KiB
+   replacing libdnf5-cli                       x86_64 5.2.6.2-1.fc41             603630c380664610adf88f7399f88fe7 779.7 KiB
+ librepo                                       x86_64 1.19.0-1.fc41              updates                          244.5 KiB
+   replacing librepo                           x86_64 1.18.1-1.fc41              603630c380664610adf88f7399f88fe7 244.5 KiB
+ libsolv                                       x86_64 0.7.31-1.fc41              updates                          944.3 KiB
+   replacing libsolv                           x86_64 0.7.30-1.fc41              603630c380664610adf88f7399f88fe7 944.2 KiB
+ libtirpc                                      x86_64 1.3.6-1.fc41               updates                          202.7 KiB
+   replacing libtirpc                          x86_64 1.3.6-0.fc41               551623a9fceb4bb4b7bf61f67f15cf34 202.7 KiB
+ libxcrypt                                     x86_64 4.4.36-10.fc41             updates                          271.4 KiB
+   replacing libxcrypt                         x86_64 4.4.36-7.fc41              603630c380664610adf88f7399f88fe7 266.8 KiB
+ systemd-libs                                  x86_64 256.8-1.fc41               updates                            2.0 MiB
+   replacing systemd-libs                      x86_64 256.7-1.fc41               603630c380664610adf88f7399f88fe7   2.0 MiB
+ vim-data                                      noarch 2:9.1.866-1.fc41           updates                           18.1 KiB
+   replacing vim-data                          noarch 2:9.1.785-1.fc41           551623a9fceb4bb4b7bf61f67f15cf34  17.8 KiB
+ vim-minimal                                   x86_64 2:9.1.866-1.fc41           updates                            1.7 MiB
+   replacing vim-minimal                       x86_64 2:9.1.785-1.fc41           551623a9fceb4bb4b7bf61f67f15cf34   1.7 MiB
+
+Transaction Summary:
+ Upgrading:         24 packages
+ Replacing:         24 package
+
+Total size of inbound packages is 12 MiB. Need to download 12 MiB.
+After this operation, 901 KiB extra will be used (install 42 MiB, remove 41 MiB).
+[ 1/24] crypto-policies-0:20241029-1.gi 100% | 447.0 KiB/s |  97.5 KiB |  00m00s
+[ 2/24] coreutils-0:9.5-11.fc41.x86_64  100% |   2.6 MiB/s |   1.1 MiB |  00m00s
+[ 3/24] dnf5-0:5.2.7.0-1.fc41.x86_64    100% |   2.9 MiB/s | 770.9 KiB |  00m00s
+[ 4/24] coreutils-common-0:9.5-11.fc41. 100% |   3.8 MiB/s |   2.1 MiB |  00m01s
+[ 5/24] libdnf5-0:5.2.7.0-1.fc41.x86_64 100% |   5.0 MiB/s |   1.2 MiB |  00m00s
+[ 6/24] libdnf5-cli-0:5.2.7.0-1.fc41.x8 100% |   1.9 MiB/s | 341.7 KiB |  00m00s
+[ 7/24] dnf5-plugins-0:5.2.7.0-1.fc41.x 100% |   3.3 MiB/s | 404.1 KiB |  00m00s
+[ 8/24] elfutils-libelf-0:0.192-6.fc41. 100% |   4.7 MiB/s | 207.4 KiB |  00m00s
+[ 9/24] elfutils-default-yama-scope-0:0 100% | 268.0 KiB/s |  12.3 KiB |  00m00s
+[10/24] elfutils-libs-0:0.192-6.fc41.x8 100% |   6.2 MiB/s | 261.9 KiB |  00m00s
+[11/24] fedora-release-common-0:41-28.n 100% | 361.0 KiB/s |  23.5 KiB |  00m00s
+[12/24] fedora-release-container-0:41-2 100% | 198.6 KiB/s |  12.7 KiB |  00m00s
+[13/24] fedora-release-identity-contain 100% | 313.2 KiB/s |  14.1 KiB |  00m00s
+[14/24] glibc-common-0:2.40-12.fc41.x86 100% |   5.1 MiB/s | 395.1 KiB |  00m00s
+[15/24] glibc-minimal-langpack-0:2.40-1 100% | 552.9 KiB/s | 106.7 KiB |  00m00s
+[16/24] glibc-0:2.40-12.fc41.x86_64     100% |   7.5 MiB/s |   2.2 MiB |  00m00s
+[17/24] krb5-libs-0:1.21.3-3.fc41.x86_6 100% |   3.0 MiB/s | 757.9 KiB |  00m00s
+[18/24] librepo-0:1.19.0-1.fc41.x86_64  100% | 748.9 KiB/s |  99.6 KiB |  00m00s
+[19/24] libsolv-0:0.7.31-1.fc41.x86_64  100% |   6.2 MiB/s | 430.7 KiB |  00m00s
+[20/24] libtirpc-0:1.3.6-1.fc41.x86_64  100% |   1.9 MiB/s |  94.4 KiB |  00m00s
+[21/24] libxcrypt-0:4.4.36-10.fc41.x86_ 100% |   2.2 MiB/s | 118.9 KiB |  00m00s
+[22/24] systemd-libs-0:256.8-1.fc41.x86 100% |   7.5 MiB/s | 732.1 KiB |  00m00s
+[23/24] vim-data-2:9.1.866-1.fc41.noarc 100% | 242.8 KiB/s |  21.9 KiB |  00m00s
+[24/24] vim-minimal-2:9.1.866-1.fc41.x8 100% |   5.7 MiB/s | 822.2 KiB |  00m00s
+--------------------------------------------------------------------------------
+[24/24] Total                           100% |   5.7 MiB/s |  12.2 MiB |  00m02s
+Running transaction
+[ 1/50] Verify package files            100% | 292.0   B/s |  24.0   B |  00m00s
+[ 2/50] Prepare transaction             100% | 648.0   B/s |  48.0   B |  00m00s
+[ 3/50] Upgrading glibc-common-0:2.40-1 100% |  16.9 MiB/s |   1.0 MiB |  00m00s
+[ 4/50] Upgrading glibc-minimal-langpac 100% |  24.2 KiB/s | 124.0   B |  00m00s
+[ 5/50] Upgrading glibc-0:2.40-12.fc41. 100% |  40.0 MiB/s |   6.7 MiB |  00m00s
+[ 6/50] Upgrading elfutils-libelf-0:0.1 100% |  68.8 MiB/s |   1.2 MiB |  00m00s
+[ 7/50] Upgrading librepo-0:1.19.0-1.fc 100% |  24.0 MiB/s | 245.7 KiB |  00m00s
+[ 8/50] Upgrading libsolv-0:0.7.31-1.fc 100% |  40.2 MiB/s | 946.0 KiB |  00m00s
+[ 9/50] Upgrading libdnf5-0:5.2.7.0-1.f 100% |  71.2 MiB/s |   3.5 MiB |  00m00s
+[10/50] Upgrading libdnf5-cli-0:5.2.7.0 100% |  52.3 MiB/s | 856.5 KiB |  00m00s
+[11/50] Upgrading systemd-libs-0:256.8- 100% |  72.6 MiB/s |   2.0 MiB |  00m00s
+[12/50] Upgrading vim-data-2:9.1.866-1. 100% |   1.7 MiB/s |  19.2 KiB |  00m00s
+[13/50] Upgrading fedora-release-identi 100% | 272.9 KiB/s |   1.9 KiB |  00m00s
+[14/50] Upgrading fedora-release-contai 100% |  30.3 KiB/s | 124.0   B |  00m00s
+[15/50] Upgrading fedora-release-common 100% | 888.5 KiB/s |  24.0 KiB |  00m00s
+[16/50] Upgrading elfutils-default-yama 100% |  34.6 KiB/s |   2.0 KiB |  00m00s
+[17/50] Upgrading crypto-policies-0:202 100% |   2.1 MiB/s | 163.3 KiB |  00m00s
+[18/50] Upgrading coreutils-common-0:9. 100% | 228.4 MiB/s |  11.2 MiB |  00m00s
+[19/50] Upgrading coreutils-0:9.5-11.fc 100% |  30.5 MiB/s |   5.7 MiB |  00m00s
+[20/50] Upgrading dnf5-0:5.2.7.0-1.fc41 100% |  32.7 MiB/s |   2.0 MiB |  00m00s
+[21/50] Upgrading krb5-libs-0:1.21.3-3. 100% |  32.2 MiB/s |   2.3 MiB |  00m00s
+[22/50] Upgrading libtirpc-0:1.3.6-1.fc 100% |  12.5 MiB/s | 204.5 KiB |  00m00s
+[23/50] Upgrading dnf5-plugins-0:5.2.7. 100% |  40.4 MiB/s |   1.1 MiB |  00m00s
+[24/50] Upgrading elfutils-libs-0:0.192 100% |  34.3 MiB/s | 668.1 KiB |  00m00s
+[25/50] Upgrading vim-minimal-2:9.1.866 100% |  61.7 MiB/s |   1.7 MiB |  00m00s
+[26/50] Upgrading libxcrypt-0:4.4.36-10 100% |  16.7 MiB/s | 274.1 KiB |  00m00s
+[27/50] Erasing elfutils-libs-0:0.192-5 100% |   1.2 KiB/s |  11.0   B |  00m00s
+[28/50] Erasing libtirpc-0:1.3.6-0.fc41 100% |   1.5 KiB/s |  12.0   B |  00m00s
+[29/50] Erasing krb5-libs-0:1.21.3-2.fc 100% |   2.6 KiB/s |  64.0   B |  00m00s
+[30/50] Erasing vim-minimal-2:9.1.785-1 100% |   3.1 KiB/s |  16.0   B |  00m00s
+[31/50] Erasing dnf5-plugins-0:5.2.6.2- 100% |   2.2 KiB/s |  84.0   B |  00m00s
+[32/50] Erasing fedora-release-common-0 100% |   4.7 KiB/s |  29.0   B |  00m00s
+[33/50] Erasing dnf5-0:5.2.6.2-1.fc41.x 100% |   6.4 KiB/s | 138.0   B |  00m00s
+[34/50] Erasing systemd-libs-0:256.7-1. 100% |   1.9 KiB/s |  23.0   B |  00m00s
+[35/50] Erasing coreutils-0:9.5-10.fc41 100% |   2.9 KiB/s | 305.0   B |  00m00s
+[36/50] Erasing libdnf5-cli-0:5.2.6.2-1 100% |   1.5 KiB/s |  15.0   B |  00m00s
+[37/50] Erasing libdnf5-0:5.2.6.2-1.fc4 100% |   2.0 KiB/s |  28.0   B |  00m00s
+[38/50] Erasing libsolv-0:0.7.30-1.fc41 100% |   1.3 KiB/s |  11.0   B |  00m00s
+[39/50] Erasing elfutils-libelf-0:0.192 100% | 681.0   B/s |  15.0   B |  00m00s
+[40/50] Erasing libxcrypt-0:4.4.36-7.fc 100% |   2.5 KiB/s |  18.0   B |  00m00s
+[41/50] Erasing coreutils-common-0:9.5- 100% |   1.3 KiB/s | 252.0   B |  00m00s
+[42/50] Erasing fedora-release-identity 100% | 500.0   B/s |   2.0   B |  00m00s
+[43/50] Erasing fedora-release-containe 100% |  32.6 KiB/s | 100.0   B |  00m00s
+[44/50] Erasing vim-data-2:9.1.785-1.fc 100% |   1.7 KiB/s |   7.0   B |  00m00s
+[45/50] Erasing crypto-policies-0:20241 100% |  26.5 KiB/s | 190.0   B |  00m00s
+[46/50] Erasing elfutils-default-yama-s 100% | 250.0   B/s |   1.0   B |  00m00s
+[47/50] Erasing librepo-0:1.18.1-1.fc41 100% | 800.0   B/s |   8.0   B |  00m00s
+[48/50] Erasing glibc-0:2.40-3.fc41.x86 100% |   2.7 KiB/s | 103.0   B |  00m00s
+[49/50] Erasing glibc-minimal-langpack- 100% |  24.4 KiB/s | 100.0   B |  00m00s
+[50/50] Erasing glibc-common-0:2.40-3.f 100% | 272.0   B/s |  52.0   B |  00m00s
+Complete!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (wget)
+[Pipeline] sh
++ dnf install wget -y
+Updating and loading repositories:
+Repositories loaded.
+Package                     Arch   Version          Repository      Size
+Installing:
+ wget2-wget                 x86_64 2.1.0-12.fc41    fedora      42.0   B
+Installing dependencies:
+ dbus                       x86_64 1:1.14.10-4.fc41 fedora       0.0   B
+ dbus-broker                x86_64 36-4.fc41        fedora     382.8 KiB
+ dbus-common                noarch 1:1.14.10-4.fc41 fedora      11.2 KiB
+ device-mapper              x86_64 1.02.199-4.fc41  fedora     348.2 KiB
+ device-mapper-libs         x86_64 1.02.199-4.fc41  fedora     414.7 KiB
+ duktape                    x86_64 2.7.0-8.fc41     fedora     616.2 KiB
+ expat                      x86_64 2.6.4-1.fc41     updates    292.9 KiB
+ gnupg2                     x86_64 2.4.5-3.fc41     fedora       9.5 MiB
+ gnutls-dane                x86_64 3.8.6-7.fc41     fedora      69.7 KiB
+ gpgme                      x86_64 1.23.2-5.fc41    fedora     579.3 KiB
+ hiredis                    x86_64 1.2.0-3.fc41     fedora     110.1 KiB
+ kbd                        x86_64 2.6.4-4.fc41     fedora       1.5 MiB
+ kbd-legacy                 noarch 2.6.4-4.fc41     fedora     567.1 KiB
+ kbd-misc                   noarch 2.6.4-4.fc41     fedora       2.5 MiB
+ kmod                       x86_64 33-1.fc41        fedora     235.5 KiB
+ libassuan                  x86_64 2.5.7-2.fc41     fedora     163.8 KiB
+ libb2                      x86_64 0.98.1-12.fc41   fedora      42.2 KiB
+ libcbor                    x86_64 0.11.0-2.fc41    fedora      73.9 KiB
+ libfdisk                   x86_64 2.40.2-4.fc41    fedora     362.9 KiB
+ libgcrypt                  x86_64 1.11.0-3.fc41    fedora       1.5 MiB
+ libgpg-error               x86_64 1.50-2.fc41      fedora     889.5 KiB
+ libksba                    x86_64 1.6.7-2.fc41     fedora     398.4 KiB
+ libpkgconf                 x86_64 2.3.0-1.fc41     fedora      78.2 KiB
+ libseccomp                 x86_64 2.5.5-2.fc41     fedora     173.3 KiB
+ libsecret                  x86_64 0.21.4-3.fc41    fedora     563.4 KiB
+ libusb1                    x86_64 1.0.27-4.fc41    updates    170.2 KiB
+ mpdecimal                  x86_64 2.5.1-16.fc41    fedora     204.9 KiB
+ npth                       x86_64 1.7-2.fc41       fedora      49.6 KiB
+ pcsc-lite                  x86_64 2.3.0-1.fc41     fedora     220.1 KiB
+ pcsc-lite-libs             x86_64 2.3.0-1.fc41     fedora      68.0 KiB
+ pkgconf                    x86_64 2.3.0-1.fc41     fedora      88.6 KiB
+ pkgconf-m4                 noarch 2.3.0-1.fc41     fedora      14.4 KiB
+ pkgconf-pkg-config         x86_64 2.3.0-1.fc41     fedora     989.0   B
+ polkit                     x86_64 125-1.fc41.1     updates    479.6 KiB
+ polkit-libs                x86_64 125-1.fc41.1     updates    208.0 KiB
+ protobuf-c                 x86_64 1.5.0-4.fc41     fedora      54.0 KiB
+ python-pip-wheel           noarch 24.2-1.fc41      fedora       1.2 MiB
+ python3-libs               x86_64 3.13.0-1.fc41    fedora      40.3 MiB
+ systemd                    x86_64 256.8-1.fc41     updates     17.0 MiB
+ systemd-pam                x86_64 256.8-1.fc41     updates      1.1 MiB
+ tpm2-tss                   x86_64 4.1.3-3.fc41     fedora       1.6 MiB
+ unbound-libs               x86_64 1.22.0-8.fc41    updates      1.4 MiB
+ wget2                      x86_64 2.1.0-12.fc41    fedora     884.1 KiB
+ wget2-libs                 x86_64 2.1.0-12.fc41    fedora     365.7 KiB
+ xkeyboard-config           noarch 2.42-2.fc41      fedora       6.5 MiB
+Installing weak dependencies:
+ cryptsetup-libs            x86_64 2.7.5-1.fc41     fedora       2.3 MiB
+ diffutils                  x86_64 3.10-8.fc41      fedora       1.6 MiB
+ gnupg2-smime               x86_64 2.4.5-3.fc41     fedora     577.9 KiB
+ kmod-libs                  x86_64 33-1.fc41        fedora     147.2 KiB
+ libbpf                     x86_64 2:1.4.7-1.fc41   updates    402.5 KiB
+ libfido2                   x86_64 1.15.0-2.fc41    fedora     238.2 KiB
+ libxkbcommon               x86_64 1.7.0-4.fc41     fedora     336.4 KiB
+ pcsc-lite-ccid             x86_64 1.6.1-2.fc41     fedora     404.2 KiB
+ pinentry                   x86_64 1.3.1-2.fc41     fedora     258.0 KiB
+ polkit-pkla-compat         x86_64 0.1-29.fc41      fedora      93.8 KiB
+ python-unversioned-command noarch 3.13.0-1.fc41    fedora      23.0   B
+ python3                    x86_64 3.13.0-1.fc41    fedora      31.8 KiB
+ qrencode-libs              x86_64 4.1.1-8.fc41     fedora     160.9 KiB
+ systemd-networkd           x86_64 256.8-1.fc41     updates      2.1 MiB
+ systemd-resolved           x86_64 256.8-1.fc41     updates    671.2 KiB
+ systemd-udev               x86_64 256.8-1.fc41     updates     11.9 MiB
+ unbound-anchor             x86_64 1.22.0-8.fc41    updates     57.4 KiB
+
+Transaction Summary:
+ Installing:        63 packages
+
+Total size of inbound packages is 33 MiB. Need to download 33 MiB.
+After this operation, 114 MiB extra will be used (install 114 MiB, remove 0 B).
+[ 1/63] wget2-wget-0:2.1.0-12.fc41.x86_ 100% |  54.3 KiB/s |   9.2 KiB |  00m00s
+[ 2/63] gpgme-0:1.23.2-5.fc41.x86_64    100% | 969.9 KiB/s | 212.4 KiB |  00m00s
+[ 3/63] wget2-0:2.1.0-12.fc41.x86_64    100% | 965.0 KiB/s | 249.0 KiB |  00m00s
+[ 4/63] libassuan-0:2.5.7-2.fc41.x86_64 100% |   2.0 MiB/s |  67.1 KiB |  00m00s
+[ 5/63] wget2-libs-0:2.1.0-12.fc41.x86_ 100% | 479.6 KiB/s | 146.3 KiB |  00m00s
+[ 6/63] libgpg-error-0:1.50-2.fc41.x86_ 100% | 977.3 KiB/s | 237.5 KiB |  00m00s
+[ 7/63] gnupg2-0:2.4.5-3.fc41.x86_64    100% |   7.8 MiB/s |   2.7 MiB |  00m00s
+[ 8/63] gnutls-dane-0:3.8.6-7.fc41.x86_ 100% | 356.3 KiB/s |  39.9 KiB |  00m00s
+[ 9/63] npth-0:1.7-2.fc41.x86_64        100% | 838.8 KiB/s |  25.2 KiB |  00m00s
+[10/63] libksba-0:1.6.7-2.fc41.x86_64   100% |   1.7 MiB/s | 159.7 KiB |  00m00s
+[11/63] libgcrypt-0:1.11.0-3.fc41.x86_6 100% |   3.8 MiB/s | 578.5 KiB |  00m00s
+[12/63] hiredis-0:1.2.0-3.fc41.x86_64   100% | 674.1 KiB/s |  49.9 KiB |  00m00s
+[13/63] tpm2-tss-0:4.1.3-3.fc41.x86_64  100% |   2.3 MiB/s | 411.5 KiB |  00m00s
+[14/63] protobuf-c-0:1.5.0-4.fc41.x86_6 100% | 352.1 KiB/s |  32.4 KiB |  00m00s
+[15/63] libb2-0:0.98.1-12.fc41.x86_64   100% |  83.9 KiB/s |  25.7 KiB |  00m00s
+[16/63] unbound-libs-0:1.22.0-8.fc41.x8 100% | 911.5 KiB/s | 554.2 KiB |  00m01s
+[17/63] mpdecimal-0:2.5.1-16.fc41.x86_6 100% | 395.4 KiB/s |  89.0 KiB |  00m00s
+[18/63] expat-0:2.6.4-1.fc41.x86_64     100% | 303.8 KiB/s | 114.5 KiB |  00m00s
+[19/63] python-pip-wheel-0:24.2-1.fc41. 100% |   2.4 MiB/s |   1.2 MiB |  00m01s
+[20/63] python3-libs-0:3.13.0-1.fc41.x8 100% |   7.7 MiB/s |   9.1 MiB |  00m01s
+[21/63] pinentry-0:1.3.1-2.fc41.x86_64  100% | 528.5 KiB/s | 111.0 KiB |  00m00s
+[22/63] libsecret-0:0.21.4-3.fc41.x86_6 100% | 948.0 KiB/s | 191.5 KiB |  00m00s
+[23/63] pcsc-lite-ccid-0:1.6.1-2.fc41.x 100% |   3.4 MiB/s | 125.9 KiB |  00m00s
+[24/63] pcsc-lite-0:2.3.0-1.fc41.x86_64 100% |   2.1 MiB/s |  96.5 KiB |  00m00s
+[25/63] unbound-anchor-0:1.22.0-8.fc41. 100% | 595.2 KiB/s |  36.9 KiB |  00m00s
+[26/63] python3-0:3.13.0-1.fc41.x86_64  100% | 487.2 KiB/s |  27.8 KiB |  00m00s
+[27/63] gnupg2-smime-0:2.4.5-3.fc41.x86 100% |   2.0 MiB/s | 259.6 KiB |  00m00s
+[28/63] libusb1-0:1.0.27-4.fc41.x86_64  100% | 218.9 KiB/s |  76.4 KiB |  00m00s
+[29/63] dbus-1:1.14.10-4.fc41.x86_64    100% | 263.7 KiB/s |   7.9 KiB |  00m00s
+[30/63] libfdisk-0:2.40.2-4.fc41.x86_64 100% |   2.9 MiB/s | 159.8 KiB |  00m00s
+[31/63] libseccomp-0:2.5.5-2.fc41.x86_6 100% |   2.1 MiB/s |  70.2 KiB |  00m00s
+[32/63] dbus-broker-0:36-4.fc41.x86_64  100% |   2.7 MiB/s | 171.7 KiB |  00m00s
+[33/63] dbus-common-1:1.14.10-4.fc41.no 100% | 375.9 KiB/s |  14.7 KiB |  00m00s
+[34/63] systemd-pam-0:256.8-1.fc41.x86_ 100% | 419.4 KiB/s | 399.7 KiB |  00m01s
+[35/63] polkit-0:125-1.fc41.1.x86_64    100% | 388.3 KiB/s | 160.3 KiB |  00m00s
+[36/63] duktape-0:2.7.0-8.fc41.x86_64   100% |   2.6 MiB/s | 169.7 KiB |  00m00s
+[37/63] pcsc-lite-libs-0:2.3.0-1.fc41.x 100% |   1.5 MiB/s |  32.4 KiB |  00m00s
+[38/63] python-unversioned-command-0:3. 100% | 678.2 KiB/s |  10.9 KiB |  00m00s
+[39/63] libxkbcommon-0:1.7.0-4.fc41.x86 100% |   3.6 MiB/s | 143.3 KiB |  00m00s
+[40/63] xkeyboard-config-0:2.42-2.fc41. 100% |   7.8 MiB/s | 972.3 KiB |  00m00s
+[41/63] polkit-libs-0:125-1.fc41.1.x86_ 100% | 188.5 KiB/s |  68.0 KiB |  00m00s
+[42/63] kmod-libs-0:33-1.fc41.x86_64    100% |   1.6 MiB/s |  69.9 KiB |  00m00s
+[43/63] diffutils-0:3.10-8.fc41.x86_64  100% |   5.1 MiB/s | 405.4 KiB |  00m00s
+[44/63] libbpf-2:1.4.7-1.fc41.x86_64    100% | 561.3 KiB/s | 179.6 KiB |  00m00s
+[45/63] cryptsetup-libs-0:2.7.5-1.fc41. 100% |   4.5 MiB/s | 532.7 KiB |  00m00s
+[46/63] device-mapper-libs-0:1.02.199-4 100% |   5.2 MiB/s | 177.1 KiB |  00m00s
+[47/63] device-mapper-0:1.02.199-4.fc41 100% |   1.9 MiB/s | 136.8 KiB |  00m00s
+[48/63] qrencode-libs-0:4.1.1-8.fc41.x8 100% | 812.4 KiB/s |  61.7 KiB |  00m00s
+[49/63] systemd-resolved-0:256.8-1.fc41 100% | 545.9 KiB/s | 311.1 KiB |  00m01s
+[50/63] polkit-pkla-compat-0:0.1-29.fc4 100% | 443.5 KiB/s |  44.3 KiB |  00m00s
+[51/63] systemd-0:256.8-1.fc41.x86_64   100% |   2.2 MiB/s |   5.7 MiB |  00m03s
+[52/63] kbd-0:2.6.4-4.fc41.x86_64       100% |   3.7 MiB/s | 414.7 KiB |  00m00s
+[53/63] systemd-networkd-0:256.8-1.fc41 100% | 656.9 KiB/s | 721.3 KiB |  00m01s
+[54/63] kmod-0:33-1.fc41.x86_64         100% |   4.3 MiB/s | 123.0 KiB |  00m00s
+[55/63] kbd-legacy-0:2.6.4-4.fc41.noarc 100% |   5.0 MiB/s | 573.6 KiB |  00m00s
+[56/63] kbd-misc-0:2.6.4-4.fc41.noarch  100% |   5.7 MiB/s |   1.7 MiB |  00m00s
+[57/63] pkgconf-pkg-config-0:2.3.0-1.fc 100% |  49.1 KiB/s |  10.0 KiB |  00m00s
+[58/63] pkgconf-0:2.3.0-1.fc41.x86_64   100% |   2.1 MiB/s |  45.2 KiB |  00m00s
+[59/63] pkgconf-m4-0:2.3.0-1.fc41.noarc 100% | 651.0 KiB/s |  14.3 KiB |  00m00s
+[60/63] libpkgconf-0:2.3.0-1.fc41.x86_6 100% |   1.3 MiB/s |  38.5 KiB |  00m00s
+[61/63] libfido2-0:1.15.0-2.fc41.x86_64 100% |   1.7 MiB/s |  98.1 KiB |  00m00s
+[62/63] libcbor-0:0.11.0-2.fc41.x86_64  100% | 789.0 KiB/s |  33.1 KiB |  00m00s
+[63/63] systemd-udev-0:256.8-1.fc41.x86 100% |   2.8 MiB/s |   2.3 MiB |  00m01s
+--------------------------------------------------------------------------------
+[63/63] Total                           100% |   4.8 MiB/s |  32.7 MiB |  00m07s
+Running transaction
+[ 1/65] Verify package files            100% | 357.0   B/s |  63.0   B |  00m00s
+[ 2/65] Prepare transaction             100% | 492.0   B/s |  63.0   B |  00m00s
+[ 3/65] Installing libgpg-error-0:1.50- 100% |  62.5 MiB/s | 895.4 KiB |  00m00s
+[ 4/65] Installing libassuan-0:2.5.7-2. 100% |  23.1 MiB/s | 165.6 KiB |  00m00s
+[ 5/65] Installing expat-0:2.6.4-1.fc41 100% |  26.2 MiB/s | 295.0 KiB |  00m00s
+[ 6/65] Installing polkit-libs-0:125-1. 100% |  22.7 MiB/s | 209.6 KiB |  00m00s
+[ 7/65] Installing libgcrypt-0:1.11.0-3 100% | 118.6 MiB/s |   1.5 MiB |  00m00s
+[ 8/65] Installing libksba-0:1.6.7-2.fc 100% |  43.5 MiB/s | 401.0 KiB |  00m00s
+[ 9/65] Installing libfdisk-0:2.40.2-4. 100% |  35.6 MiB/s | 364.1 KiB |  00m00s
+[10/65] Installing npth-0:1.7-2.fc41.x8 100% |   7.1 MiB/s |  50.7 KiB |  00m00s
+[11/65] Installing libcbor-0:0.11.0-2.f 100% |  10.5 MiB/s |  75.3 KiB |  00m00s
+[12/65] Installing libpkgconf-0:2.3.0-1 100% |   9.7 MiB/s |  79.3 KiB |  00m00s
+[13/65] Installing pkgconf-0:2.3.0-1.fc 100% |   8.1 MiB/s |  91.1 KiB |  00m00s
+[14/65] Installing pkgconf-m4-0:2.3.0-1 100% |   2.1 MiB/s |  14.8 KiB |  00m00s
+[15/65] Installing pkgconf-pkg-config-0 100% | 295.6 KiB/s |   1.8 KiB |  00m00s
+[16/65] Installing kmod-0:33-1.fc41.x86 100% |  14.6 MiB/s | 240.0 KiB |  00m00s
+[17/65] Installing kbd-misc-0:2.6.4-4.f 100% |  14.8 MiB/s |   2.6 MiB |  00m00s
+[18/65] Installing kbd-legacy-0:2.6.4-4 100% |   8.6 MiB/s | 616.8 KiB |  00m00s
+[19/65] Installing kbd-0:2.6.4-4.fc41.x 100% |  31.2 MiB/s |   1.6 MiB |  00m00s
+[20/65] Installing kmod-libs-0:33-1.fc4 100% |  12.1 MiB/s | 148.3 KiB |  00m00s
+[21/65] Installing xkeyboard-config-0:2 100% |  46.4 MiB/s |   6.5 MiB |  00m00s
+[22/65] Installing pcsc-lite-libs-0:2.3 100% |   8.5 MiB/s |  69.5 KiB |  00m00s
+[23/65] Installing duktape-0:2.7.0-8.fc 100% |  43.1 MiB/s | 618.2 KiB |  00m00s
+[24/65] Installing dbus-common-1:1.14.1 100% | 112.9 KiB/s |  13.6 KiB |  00m00s
+[25/65] Installing dbus-broker-0:36-4.f 100% |   9.6 MiB/s | 385.3 KiB |  00m00s
+[26/65] Installing dbus-1:1.14.10-4.fc4 100% |  24.2 KiB/s | 124.0   B |  00m00s
+[27/65] Installing libseccomp-0:2.5.5-2 100% |  17.1 MiB/s | 175.2 KiB |  00m00s
+[28/65] Installing systemd-pam-0:256.8- 100% |  37.4 MiB/s |   1.1 MiB |  00m00s
+[29/65] Installing systemd-0:256.8-1.fc 100% |  24.4 MiB/s |  17.1 MiB |  00m01s
+>>> Running post-install scriptlet: systemd-0:256.8-1.fc41.x86_64
+>>> Finished post-install scriptlet: systemd-0:256.8-1.fc41.x86_64
+>>> Scriptlet output:
+>>> Creating group 'systemd-journal' with GID 190.
+>>> Creating group 'systemd-oom' with GID 999.
+>>> Creating user 'systemd-oom' (systemd Userspace OOM Killer) with UID 999 and 
+>>> 
+[30/65] Installing polkit-0:125-1.fc41. 100% |   7.7 MiB/s | 489.6 KiB |  00m00s
+[31/65] Installing device-mapper-libs-0 100% |  40.6 MiB/s | 415.8 KiB |  00m00s
+[32/65] Installing device-mapper-0:1.02 100% |  28.6 MiB/s | 351.8 KiB |  00m00s
+[33/65] Installing cryptsetup-libs-0:2. 100% | 111.6 MiB/s |   2.3 MiB |  00m00s
+[34/65] Installing libusb1-0:1.0.27-4.f 100% |  16.8 MiB/s | 171.9 KiB |  00m00s
+[35/65] Installing libsecret-0:0.21.4-3 100% |  43.2 MiB/s | 575.2 KiB |  00m00s
+[36/65] Installing python-pip-wheel-0:2 100% | 112.9 MiB/s |   1.2 MiB |  00m00s
+[37/65] Installing mpdecimal-0:2.5.1-16 100% |  22.4 MiB/s | 206.0 KiB |  00m00s
+[38/65] Installing libb2-0:0.98.1-12.fc 100% |   2.3 MiB/s |  43.3 KiB |  00m00s
+[39/65] Installing python3-libs-0:3.13. 100% |  58.5 MiB/s |  40.7 MiB |  00m01s
+[40/65] Installing python3-0:3.13.0-1.f 100% |   5.5 MiB/s |  33.6 KiB |  00m00s
+[41/65] Installing pcsc-lite-ccid-0:1.6 100% |   9.0 MiB/s | 407.2 KiB |  00m00s
+[42/65] Installing pcsc-lite-0:2.3.0-1. 100% |   2.7 MiB/s | 223.5 KiB |  00m00s
+>>> Running post-install scriptlet: pcsc-lite-0:2.3.0-1.fc41.x86_64
+>>> Finished post-install scriptlet: pcsc-lite-0:2.3.0-1.fc41.x86_64
+>>> Scriptlet output:
+>>> Created symlink '/etc/systemd/system/sockets.target.wants/pcscd.socket' → 
+>>> 
+[43/65] Installing protobuf-c-0:1.5.0-4 100% |   9.0 MiB/s |  55.5 KiB |  00m00s
+[44/65] Installing hiredis-0:1.2.0-3.fc 100% |   1.5 MiB/s | 111.8 KiB |  00m00s
+[45/65] Installing unbound-libs-0:1.22. 100% |  75.6 MiB/s |   1.4 MiB |  00m00s
+[46/65] Installing gnutls-dane-0:3.8.6- 100% | 904.3 KiB/s |  70.5 KiB |  00m00s
+>>> Running pre-install scriptlet: tpm2-tss-0:4.1.3-3.fc41.x86_64
+>>> Finished pre-install scriptlet: tpm2-tss-0:4.1.3-3.fc41.x86_64
+>>> Scriptlet output:
+>>> useradd: Warning: missing or non-executable shell '/usr/sbin/nologin'
+>>> 
+[47/65] Installing tpm2-tss-0:4.1.3-3.f 100% |  40.5 MiB/s |   1.6 MiB |  00m00s
+[48/65] Installing gnupg2-0:2.4.5-3.fc4 100% | 104.9 MiB/s |   9.5 MiB |  00m00s
+[49/65] Installing gpgme-0:1.23.2-5.fc4 100% |  47.3 MiB/s | 581.7 KiB |  00m00s
+[50/65] Installing wget2-libs-0:2.1.0-1 100% |  32.6 MiB/s | 366.9 KiB |  00m00s
+[51/65] Installing wget2-0:2.1.0-12.fc4 100% |  54.3 MiB/s | 889.7 KiB |  00m00s
+[52/65] Installing wget2-wget-0:2.1.0-1 100% | 144.5 KiB/s | 444.0   B |  00m00s
+[53/65] Installing gnupg2-smime-0:2.4.5 100% |  56.6 MiB/s | 579.1 KiB |  00m00s
+[54/65] Installing unbound-anchor-0:1.2 100% | 948.7 KiB/s |  58.8 KiB |  00m00s
+>>> Running post-install scriptlet: unbound-anchor-0:1.22.0-8.fc41.x86_64
+>>> Finished post-install scriptlet: unbound-anchor-0:1.22.0-8.fc41.x86_64
+>>> Scriptlet output:
+>>> Created symlink '/etc/systemd/system/timers.target.wants/unbound-anchor.time
+>>> 
+[55/65] Installing python-unversioned-c 100% |  82.8 KiB/s | 424.0   B |  00m00s
+[56/65] Installing pinentry-0:1.3.1-2.f 100% |  21.2 MiB/s | 260.3 KiB |  00m00s
+[57/65] Installing systemd-udev-0:256.8 100% |  12.0 MiB/s |  12.0 MiB |  00m01s
+>>> Running post-install scriptlet: systemd-udev-0:256.8-1.fc41.x86_64
+>>> Finished post-install scriptlet: systemd-udev-0:256.8-1.fc41.x86_64
+>>> Scriptlet output:
+>>> Created symlink '/etc/systemd/system/dbus-org.freedesktop.home1.service' →
+>>> Created symlink '/etc/systemd/system/multi-user.target.wants/systemd-homed.s
+>>> Created symlink '/etc/systemd/system/systemd-homed.service.wants/systemd-hom
+>>> Created symlink '/etc/systemd/system/dbus-org.freedesktop.oom1.service' → 
+>>> Created symlink '/etc/systemd/system/multi-user.target.wants/systemd-oomd.se
+>>> Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pstore.ser
+>>> Created symlink '/etc/systemd/system/multi-user.target.wants/remote-cryptset
+>>> 
+[58/65] Installing polkit-pkla-compat-0 100% |   7.4 MiB/s |  98.3 KiB |  00m00s
+[59/65] Installing systemd-networkd-0:2 100% |  27.3 MiB/s |   2.1 MiB |  00m00s
+[60/65] Installing systemd-resolved-0:2 100% |   9.8 MiB/s | 675.2 KiB |  00m00s
+>>> Running post-install scriptlet: systemd-resolved-0:256.8-1.fc41.x86_64
+>>> Finished post-install scriptlet: systemd-resolved-0:256.8-1.fc41.x86_64
+>>> Scriptlet output:
+>>> Created symlink '/etc/systemd/system/dbus-org.freedesktop.resolve1.service' 
+>>> Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-resolved.s
+>>> 
+[61/65] Installing libxkbcommon-0:1.7.0 100% |  36.7 MiB/s | 338.1 KiB |  00m00s
+[62/65] Installing libfido2-0:1.15.0-2. 100% |  29.3 MiB/s | 239.7 KiB |  00m00s
+[63/65] Installing qrencode-libs-0:4.1. 100% |  26.5 MiB/s | 162.7 KiB |  00m00s
+[64/65] Installing diffutils-0:3.10-8.f 100% |  93.5 MiB/s |   1.6 MiB |  00m00s
+[65/65] Installing libbpf-2:1.4.7-1.fc4 100% | 282.9 KiB/s | 403.4 KiB |  00m01s
+>>> Running trigger-install scriptlet: systemd-0:256.8-1.fc41.x86_64
+>>> Finished trigger-install scriptlet: systemd-0:256.8-1.fc41.x86_64
+>>> Scriptlet output:
+>>> Creating group 'systemd-coredump' with GID 997.
+>>> Creating user 'systemd-coredump' (systemd Core Dumper) with UID 997 and GID 
+>>> Creating group 'systemd-network' with GID 192.
+>>> Creating user 'systemd-network' (systemd Network Management) with UID 192 an
+>>> Creating group 'systemd-resolve' with GID 193.
+>>> Creating user 'systemd-resolve' (systemd Resolver) with UID 193 and GID 193.
+>>> Creating group 'systemd-timesync' with GID 996.
+>>> Creating user 'systemd-timesync' (systemd Time Synchronization) with UID 996
+>>> 
+Complete!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (download)
+[Pipeline] sh
++ wget -P /tmp/ https://github.com/Oz73/System_administration/raw/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm
+[0] Downloading 'https://github.com/Oz73/System_administration/raw/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm' ...
+HTTP response 302  [https://github.com/Oz73/System_administration/raw/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm]
+Adding URL: https://raw.githubusercontent.com/Oz73/System_administration/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm
+[0] Downloading 'https://raw.githubusercontent.com/Oz73/System_administration/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm' ...
+Saving '/tmp//test-bash-1.0-1.fc40.noarch.rpm'
+HTTP response 200  [https://raw.githubusercontent.com/Oz73/System_administration/refs/heads/main/rpm/test-bash-1.0-1.fc40.noarch.rpm]
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (install)
+[Pipeline] sh
++ rpm -ivh /tmp/test-bash-1.0-1.fc40.noarch.rpm
+Verifying...                          ########################################
+Preparing...                          ########################################
+Updating / installing...
+test-bash-1.0-1.fc40                  ########################################
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (use script)
+[Pipeline] sh
++ test_bash.sh
+Кількість файлів у каталозі /etc: 52
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+$ docker stop --time=1 277ee042e791cbfbce92de959f0782baab6e82c05bd882b0795d93945a320656
+$ docker rm -f --volumes 277ee042e791cbfbce92de959f0782baab6e82c05bd882b0795d93945a320656
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+Could not update commit status, please check if your scan credentials belong to a member of the organization or a collaborator of the repository and repo:status scope is selected
+
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS

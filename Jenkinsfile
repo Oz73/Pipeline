@@ -15,7 +15,7 @@ pipeline {
 
     stage('wget') {
       steps {
-        sh 'dnf install wget'
+        sh 'dnf install wget -y'
       }
     }
 
